@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- margins, paddings, width, height -->
+    <dimen name="spacing_24">24dp</dimen>
+
+    <!-- text size -->
+    <dimen name="text_size_24">24sp</dimen>
+
+    <!-- extra dimens -->
+    <dimen name="divider_height">1dp</dimen>
+</resources>
