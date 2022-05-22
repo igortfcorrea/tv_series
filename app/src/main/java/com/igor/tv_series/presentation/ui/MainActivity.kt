@@ -1,14 +1,14 @@
-package com.igor.tv_series.ui
+package com.igor.tv_series.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.igor.tv_series.databinding.ActivityMainBinding
-import com.igor.tv_series.helpers.fadeIn
-import com.igor.tv_series.helpers.fadeOut
-import com.igor.tv_series.helpers.hideSoftKeyboard
-import com.igor.tv_series.models.SerieUIModel
-import com.igor.tv_series.ui.serie_details.SerieDetailsActivity
+import com.igor.tv_series.presentation.helpers.fadeIn
+import com.igor.tv_series.presentation.helpers.fadeOut
+import com.igor.tv_series.presentation.helpers.hideSoftKeyboard
+import com.igor.tv_series.presentation.models.SerieUIModel
+import com.igor.tv_series.presentation.ui.serie_details.SerieDetailsActivity
 
 class MainActivity : AppCompatActivity() {
 

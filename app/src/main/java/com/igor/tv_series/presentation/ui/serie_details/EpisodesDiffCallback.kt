@@ -1,7 +1,7 @@
-package com.igor.tv_series.ui.serie_details
+package com.igor.tv_series.presentation.ui.serie_details
 
 import androidx.recyclerview.widget.DiffUtil
-import com.igor.tv_series.models.EpisodeUIModel
+import com.igor.tv_series.presentation.models.EpisodeUIModel
 
 class EpisodesDiffCallback : DiffUtil.ItemCallback<EpisodeUIModel>() {
     override fun areItemsTheSame(oldEpisode: EpisodeUIModel, newEpisode: EpisodeUIModel): Boolean {

@@ -1,4 +1,4 @@
-package com.igor.tv_series.ui.serie_details
+package com.igor.tv_series.presentation.ui.serie_details
 
 import android.os.Bundle
 import android.text.Html
@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.igor.tv_series.R
 import com.igor.tv_series.databinding.FragmentSerieDetailsBinding
-import com.igor.tv_series.helpers.loadImage
-import com.igor.tv_series.models.EpisodeUIModel
-import com.igor.tv_series.models.SerieUIModel
+import com.igor.tv_series.presentation.helpers.loadImage
+import com.igor.tv_series.presentation.models.EpisodeUIModel
+import com.igor.tv_series.presentation.models.SerieUIModel
 import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 

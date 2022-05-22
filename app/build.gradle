@@ -49,6 +49,15 @@ dependencies {
     implementation deps.navigation.fragment
     implementation deps.navigation.ui
 
+    implementation deps.retrofit2.retrofit
+    implementation deps.retrofit2.gson
+
+    implementation deps.koin.core
+    implementation deps.koin.android
+
+    implementation deps.okhttp3.okhttp
+    implementation deps.okhttp3.interceptor
+
     testImplementation deps.junit
     androidTestImplementation deps.androidx.ext_junit
     androidTestImplementation deps.androidx.espresso_core

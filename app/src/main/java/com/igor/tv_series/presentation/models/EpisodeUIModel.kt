@@ -1,4 +1,4 @@
-package com.igor.tv_series.models
+package com.igor.tv_series.presentation.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

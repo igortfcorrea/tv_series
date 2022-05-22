@@ -1,4 +1,4 @@
-package com.igor.tv_series.ui.serie_details
+package com.igor.tv_series.presentation.ui.serie_details
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.igor.tv_series.databinding.ItemEpisodeBinding
-import com.igor.tv_series.models.EpisodeUIModel
+import com.igor.tv_series.presentation.models.EpisodeUIModel
 
 class EpisodesAdapter(
     private val context: Context,

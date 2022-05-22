@@ -1,4 +1,4 @@
-package com.igor.tv_series.helpers
+package com.igor.tv_series.presentation.helpers
 
 import android.app.Activity
 import android.view.View

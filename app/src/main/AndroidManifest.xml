@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tvseries">
         <activity
-            android:name=".ui.serie_details.SerieDetailsActivity"
+            android:name="com.igor.tv_series.presentation.ui.serie_details.SerieDetailsActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.igor.tv_series.presentation.ui.MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/serieDetailsFragment"
-        android:name="com.igor.tv_series.ui.serie_details.SerieDetailsFragment"
+        android:name="com.igor.tv_series.presentation.ui.serie_details.SerieDetailsFragment"
         android:label="fragment_serie_details"
         tools:layout="@layout/fragment_serie_details" >
         <action
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/episodeFragment"
-        android:name="com.igor.tv_series.ui.serie_details.EpisodeFragment"
+        android:name="com.igor.tv_series.presentation.ui.serie_details.EpisodeFragment"
         android:label="fragment_episode" />
 
 </navigation>

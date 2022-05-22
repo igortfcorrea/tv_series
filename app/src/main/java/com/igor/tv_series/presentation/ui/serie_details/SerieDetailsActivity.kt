@@ -1,4 +1,4 @@
-package com.igor.tv_series.ui.serie_details
+package com.igor.tv_series.presentation.ui.serie_details
 
 import android.content.Context
 import android.content.Intent
@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import com.igor.tv_series.R
 import com.igor.tv_series.databinding.ActivitySerieDetailsBinding
-import com.igor.tv_series.models.SerieUIModel
+import com.igor.tv_series.presentation.models.SerieUIModel
 
 class SerieDetailsActivity : AppCompatActivity() {
 

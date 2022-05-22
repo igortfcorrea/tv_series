@@ -14,7 +14,11 @@ ext.versions = [
         espresso_core: '3.4.0',
         glide: '4.13.0',
         navigation: '2.4.2',
-        legacy: '1.0.0'
+        legacy: '1.0.0',
+        retrofit2: '2.9.0',
+        koin : '3.1.2',
+        okhttp3 : '4.2.2',
+        okhttp3_interceptor : '3.4.1'
 ]
 
 ext.deps = [
@@ -42,4 +46,19 @@ ext.deps = [
                 testing: "androidx.navigation:navigation-testing:${versions.navigation}",
                 dynamic_features: "androidx.navigation:navigation-dynamic-features-fragment:${versions.navigation}"
         ],
+
+        'retrofit2' : [
+                retrofit : "com.squareup.retrofit2:retrofit:${versions.retrofit2}",
+                gson : "com.squareup.retrofit2:converter-gson:${versions.retrofit2}"
+        ],
+
+        'koin' : [
+                core : "io.insert-koin:koin-core:${versions.koin}",
+                android : "io.insert-koin:koin-android:${versions.koin}"
+        ],
+
+        'okhttp3' : [
+                okhttp : "com.squareup.okhttp3:okhttp:${versions.okhttp3}",
+                interceptor : "com.squareup.okhttp3:logging-interceptor:${versions.okhttp3_interceptor}"
+        ]
 ]

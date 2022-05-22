@@ -1,16 +1,12 @@
-package com.igor.tv_series.models
+package com.igor.tv_series.data.models
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
-@Parcelize
-data class SerieUIModel(
+data class SerieDto(
     val id: Int,
-    val score: Float,
+    val rating: RatingDto,
     val name: String,
     val imageUrl: String,
     val premiered: String,
     val ended: String?,
     val genres: List<String>,
     val summary: String
-) : Parcelable
+)

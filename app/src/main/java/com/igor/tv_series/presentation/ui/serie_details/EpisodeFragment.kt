@@ -1,4 +1,4 @@
-package com.igor.tv_series.ui.serie_details
+package com.igor.tv_series.presentation.ui.serie_details
 
 import android.os.Bundle
 import android.text.Html
@@ -6,11 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.igor.tv_series.R
 import com.igor.tv_series.databinding.FragmentEpisodeBinding
-import com.igor.tv_series.databinding.FragmentSerieDetailsBinding
-import com.igor.tv_series.helpers.loadImage
-import com.igor.tv_series.models.EpisodeUIModel
+import com.igor.tv_series.presentation.helpers.loadImage
+import com.igor.tv_series.presentation.models.EpisodeUIModel
 
 private const val EPISODE = "EPISODE"
 
