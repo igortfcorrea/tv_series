@@ -24,15 +24,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val list = listOf(
-            SerieUIModel(1, 0.997f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
-            SerieUIModel(2, 0.897f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
-            SerieUIModel(3, 0.9797f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
-            SerieUIModel(4, 0.6f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
-            SerieUIModel(5, 0.95f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
-            SerieUIModel(6, 0.123f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
-            SerieUIModel(7, 0.111f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
-            SerieUIModel(8, 0.97f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
-            SerieUIModel(9, 0.987f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg")
+            SerieUIModel(1, 0.997f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b>…en it will go away.</p>"),
+            SerieUIModel(2, 0.897f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg","2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b>…en it will go away.</p>"),
+            SerieUIModel(3, 0.9797f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b>…en it will go away.</p>"),
+            SerieUIModel(4, 0.6f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b>…en it will go away.</p>"),
+            SerieUIModel(5, 0.95f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b>…en it will go away.</p>"),
+            SerieUIModel(6, 0.123f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b>…en it will go away.</p>"),
+            SerieUIModel(7, 0.111f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b>…en it will go away.</p>"),
+            SerieUIModel(8, 0.97f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b>…en it will go away.</p>"),
+            SerieUIModel(9, 0.987f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b>…en it will go away.</p>")
         )
         binding.seriesRecyclerView.layoutManager = linearLayoutManager
         adapter = SeriesAdapter(this) { serie, _ ->

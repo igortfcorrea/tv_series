@@ -8,5 +8,9 @@ data class SerieUIModel(
     val id: Int,
     val score: Float,
     val name: String,
-    val imageUrl: String
+    val imageUrl: String,
+    val premiered: String,
+    val ended: String?,
+    val genres: List<String>,
+    val summary: String
 ) : Parcelable

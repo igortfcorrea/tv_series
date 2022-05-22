@@ -13,7 +13,7 @@ class SerieDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySerieDetailsBinding
 
-    private val serie by lazy { intent?.extras?.getParcelable<SerieUIModel>("SERIE") }
+    private val serie by lazy { intent?.extras?.getParcelable<SerieUIModel>(SERIE_EXTRA) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +32,11 @@ class SerieDetailsActivity : AppCompatActivity() {
     }
 
     companion object {
+        private const val SERIE_EXTRA = "SERIE"
+
         fun getIntent(context: Context, serie: SerieUIModel) =
             Intent(context, SerieDetailsActivity::class.java).apply {
-                putExtra("SERIE", serie)
+                putExtra(SERIE_EXTRA, serie)
             }
     }
 }

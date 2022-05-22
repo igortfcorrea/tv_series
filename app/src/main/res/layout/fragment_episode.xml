@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/episodeImageView"
-        android:layout_width="@dimen/medium_poster"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/medium_poster"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="@+id/episodeNameTextView" />
 
     <TextView
-        android:id="@+id/summaryTextView"
+        android:id="@+id/episodeSummaryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_24"

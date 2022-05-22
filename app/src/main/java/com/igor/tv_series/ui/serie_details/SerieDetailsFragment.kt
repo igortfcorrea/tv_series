@@ -1,6 +1,8 @@
 package com.igor.tv_series.ui.serie_details
 
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -57,6 +59,9 @@ class SerieDetailsFragment : Fragment() {
         serie?.let { serie ->
             binding.imageView.loadImage(requireContext(), serie.imageUrl)
             binding.serieNameTextView.text = serie.name
+            binding.airDateTextView.text = serie.premiered
+            binding.airTimeTextView.text = serie.ended
+            binding.summaryTextView.text = Html.fromHtml(serie.summary, Html.FROM_HTML_MODE_COMPACT)
         }
     }
 }

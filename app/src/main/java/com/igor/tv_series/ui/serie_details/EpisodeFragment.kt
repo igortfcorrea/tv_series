@@ -1,6 +1,7 @@
 package com.igor.tv_series.ui.serie_details
 
 import android.os.Bundle
+import android.text.Html
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -45,5 +46,6 @@ class EpisodeFragment : Fragment() {
             binding.episodeImageView.loadImage(requireContext(), url)
         }
         binding.episodeNameTextView.text = episode?.name
+        binding.episodeSummaryTextView.text = Html.fromHtml(episode?.summary, Html.FROM_HTML_MODE_COMPACT)
     }
 }
