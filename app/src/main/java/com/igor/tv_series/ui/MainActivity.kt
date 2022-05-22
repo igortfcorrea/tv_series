@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.igor.tv_series.databinding.ActivityMainBinding
+import com.igor.tv_series.helpers.fadeIn
+import com.igor.tv_series.helpers.fadeOut
+import com.igor.tv_series.helpers.hideSoftKeyboard
 import com.igor.tv_series.models.SerieUIModel
 
 class MainActivity : AppCompatActivity() {
@@ -36,5 +39,23 @@ class MainActivity : AppCompatActivity() {
         }
         binding.seriesRecyclerView.adapter = adapter
         adapter?.submitList(list)
+
+        setupListeners()
+    }
+
+    private fun setupListeners() {
+        binding.searchSerieLayout.searchEditText.setOnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                binding.searchSerieLayout.searchClearImageView.fadeIn()
+            } else {
+                binding.searchSerieLayout.searchClearImageView.fadeOut()
+                hideSoftKeyboard(view)
+            }
+        }
+
+        binding.searchSerieLayout.searchClearImageView.setOnClickListener {
+            binding.searchSerieLayout.searchEditText.clearFocus()
+            binding.searchSerieLayout.searchEditText.text.clear()
+        }
     }
 }
