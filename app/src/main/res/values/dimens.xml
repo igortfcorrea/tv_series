@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- margins, paddings, width, height -->
-    <dimen name="spacing_24">24dp</dimen>
+    <dimen name="spacing_8">8dp</dimen>
     <dimen name="spacing_16">16dp</dimen>
+    <dimen name="spacing_24">24dp</dimen>
     <dimen name="spacing_48">48dp</dimen>
 
     <!-- text size -->
@@ -15,4 +16,6 @@
 
     <!-- extra dimens -->
     <dimen name="divider_height">1dp</dimen>
+    <dimen name="small_poster">72dp</dimen>
+    <dimen name="medium_poster">144dp</dimen>
 </resources>

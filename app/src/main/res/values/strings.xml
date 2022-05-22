@@ -2,4 +2,7 @@
     <string name="app_name">tv-series</string>
     <string name="main_title">TV Series</string>
     <string name="search_series_hint">Search series by name</string>
+    <string name="episodes">Episodes</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
