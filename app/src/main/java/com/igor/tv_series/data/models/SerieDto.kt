@@ -4,7 +4,7 @@ data class SerieDto(
     val id: Int,
     val rating: RatingDto,
     val name: String,
-    val imageUrl: String,
+    val image: ImageDto,
     val premiered: String,
     val ended: String?,
     val genres: List<String>,
