@@ -81,6 +81,7 @@ class SerieDetailsFragment : Fragment() {
             binding.serieNameTextView.text = serie.name
             binding.airDateTextView.text = serie.premiered
             binding.airTimeTextView.text = serie.ended
+            binding.genresTextView.text = serie.genres.joinToString()
             binding.summaryTextView.text = Html.fromHtml(serie.summary, Html.FROM_HTML_MODE_COMPACT)
         }
     }
