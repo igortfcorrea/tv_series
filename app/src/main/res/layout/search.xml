@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:clickable="false"
         android:alpha="0"
+        android:layout_marginEnd="@dimen/spacing_16"
         app:layout_constraintBottom_toBottomOf="@id/searchEditText"
         app:layout_constraintEnd_toEndOf="@id/searchEditText"
         app:layout_constraintTop_toTopOf="@id/searchEditText"

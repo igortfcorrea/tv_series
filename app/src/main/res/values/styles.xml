@@ -13,7 +13,7 @@
         <item name="android:textSize">@dimen/text_size_16</item>
         <item name="android:layout_margin">@dimen/spacing_24</item>
         <item name="android:paddingStart">@dimen/spacing_16</item>
-        <item name="android:paddingEnd">@dimen/spacing_16</item>
+        <item name="android:paddingEnd">@dimen/spacing_48</item>
     </style>
 
     <style name="TextViewSerieName">
