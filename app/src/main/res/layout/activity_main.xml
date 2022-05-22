@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     tools:context=".MainActivity">
 
     <TextView
@@ -17,15 +19,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <include layout="@layout/search"
+        android:id="@+id/searchSerieLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainTitleTextView" />
+
     <View
         android:id="@+id/dividerView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/divider_height"
-        android:layout_marginTop="@dimen/spacing_24"
         android:background="@color/primary_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainTitleTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/searchSerieLayout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

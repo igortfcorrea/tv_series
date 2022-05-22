@@ -2,9 +2,15 @@
 <resources>
     <!-- margins, paddings, width, height -->
     <dimen name="spacing_24">24dp</dimen>
+    <dimen name="spacing_16">16dp</dimen>
+    <dimen name="spacing_48">48dp</dimen>
 
     <!-- text size -->
+    <dimen name="text_size_16">16sp</dimen>
     <dimen name="text_size_24">24sp</dimen>
+
+    <!-- radius   -->
+    <dimen name="radius_400">400dp</dimen>
 
     <!-- extra dimens -->
     <dimen name="divider_height">1dp</dimen>
