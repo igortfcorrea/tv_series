@@ -1,4 +1,4 @@
-package com.igor.tv_series
+package com.igor.tv_series.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

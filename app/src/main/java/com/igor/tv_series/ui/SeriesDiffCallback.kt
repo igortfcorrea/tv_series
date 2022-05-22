@@ -1,4 +1,4 @@
-package com.igor.tv_series
+package com.igor.tv_series.ui
 
 import androidx.recyclerview.widget.DiffUtil
 import com.igor.tv_series.models.SerieUIModel

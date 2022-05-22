@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tvseries">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
