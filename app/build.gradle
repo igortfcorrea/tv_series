@@ -41,6 +41,9 @@ dependencies {
 
     implementation deps.material
 
+    implementation deps.glide.main
+    annotationProcessor deps.glide.compiler
+
     testImplementation deps.junit
     androidTestImplementation deps.androidx.ext_junit
     androidTestImplementation deps.androidx.espresso_core

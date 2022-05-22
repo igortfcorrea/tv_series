@@ -23,18 +23,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val list = listOf(
-            SerieUIModel(1, 0.997f, "Name test", "asd"),
-            SerieUIModel(2, 0.897f, "Name test", "asd"),
-            SerieUIModel(3, 0.9797f, "Name test", "asd"),
-            SerieUIModel(4, 0.6f, "Name test", "asd"),
-            SerieUIModel(5, 0.95f, "Name test", "asd"),
-            SerieUIModel(6, 0.123f, "Name test", "asd"),
-            SerieUIModel(7, 0.111f, "Name test", "asd"),
-            SerieUIModel(8, 0.97f, "Name test", "asd"),
-            SerieUIModel(9, 0.987f, "Name test", "asd")
+            SerieUIModel(1, 0.997f, "Name test", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
+            SerieUIModel(2, 0.897f, "Name test", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
+            SerieUIModel(3, 0.9797f, "Name test", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
+            SerieUIModel(4, 0.6f, "Name test", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
+            SerieUIModel(5, 0.95f, "Name test", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
+            SerieUIModel(6, 0.123f, "Name test", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
+            SerieUIModel(7, 0.111f, "Name test", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
+            SerieUIModel(8, 0.97f, "Name test", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"),
+            SerieUIModel(9, 0.987f, "Name test", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg")
         )
         binding.seriesRecyclerView.layoutManager = linearLayoutManager
-        adapter = SeriesAdapter() { series, position ->
+        adapter = SeriesAdapter(this) { series, position ->
             Log.d("click -->", "item position: $position")
         }
         binding.seriesRecyclerView.adapter = adapter
