@@ -3,7 +3,7 @@ package com.igor.tv_series.domain.usecases
 import com.igor.tv_series.data.repositories.SeriesRepository
 import com.igor.tv_series.domain.Empty
 import com.igor.tv_series.domain.Error
-import com.igor.tv_series.domain.Loaded
+import com.igor.tv_series.domain.Success
 import com.igor.tv_series.domain.State
 import com.igor.tv_series.domain.models.SerieModel
 import com.igor.tv_series.domain.models.toModel
@@ -22,7 +22,7 @@ internal class FetchSeriesImpl(
             fetchSeriesResult.getOrNull()?.map { serieDto ->
                 serieDto.toModel()
             }?.let { series ->
-                Loaded(series)
+                Success(series)
             } ?: run {
                 Empty()
             }
