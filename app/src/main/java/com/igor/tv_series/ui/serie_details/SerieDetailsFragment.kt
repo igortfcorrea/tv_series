@@ -13,6 +13,7 @@ import com.igor.tv_series.helpers.loadImage
 import com.igor.tv_series.models.EpisodeUIModel
 import com.igor.tv_series.models.SerieUIModel
 import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 
 class SerieDetailsFragment : Fragment() {
 
@@ -46,11 +47,22 @@ class SerieDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupListeners()
-
         setupSerieInformations()
 
         setupSpinner()
+
+        binding.episodesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        val adapter = EpisodesAdapter(requireContext()) { episode, position ->
+            val bundle = Bundle().apply {
+                this.putParcelable("EPISODE", episode)
+            }
+            findNavController().navigate(
+                R.id.action_serieDetailsFragment_to_episodeFragment,
+                bundle
+            )
+        }
+        binding.episodesRecyclerView.adapter = adapter
+        adapter.submitList(listOf(episode, episode, episode, episode, episode, episode, episode, episode, episode, episode, episode, episode))
     }
 
     private fun setupSpinner() {
@@ -61,18 +73,6 @@ class SerieDetailsFragment : Fragment() {
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.seasonSpinner.adapter = adapter
-    }
-
-    private fun setupListeners() {
-        binding.imageView.setOnClickListener {
-            val bundle = Bundle().apply {
-                this.putParcelable("EPISODE", episode)
-            }
-            findNavController().navigate(
-                R.id.action_serieDetailsFragment_to_episodeFragment,
-                bundle
-            )
-        }
     }
 
     private fun setupSerieInformations() {

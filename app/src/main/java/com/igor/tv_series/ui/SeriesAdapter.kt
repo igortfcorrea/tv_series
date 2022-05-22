@@ -13,28 +13,28 @@ import com.igor.tv_series.models.SerieUIModel
 class SeriesAdapter(
     private val context: Context,
     private val onItemClicked: (SerieUIModel, Int) -> Unit
-) : ListAdapter<SerieUIModel, SeriesAdapter.BdrClientsViewHolder>(SeriesDiffCallback()) {
+) : ListAdapter<SerieUIModel, SeriesAdapter.SeriesAdapterViewHolder>(SeriesDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BdrClientsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeriesAdapterViewHolder {
         val binding = ItemSerieBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-        return BdrClientsViewHolder(
+        return SeriesAdapterViewHolder(
             context = context,
             binding = binding,
             onItemClicked = onItemClicked
         )
     }
 
-    override fun onBindViewHolder(holder: BdrClientsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SeriesAdapterViewHolder, position: Int) {
         getItem(position).let { serie ->
             holder.bind(serie, position)
         }
     }
 
-    inner class BdrClientsViewHolder(
+    inner class SeriesAdapterViewHolder(
         private val context: Context,
         private val binding: ItemSerieBinding,
         private val onItemClicked: (SerieUIModel, Int) -> Unit
@@ -42,11 +42,11 @@ class SeriesAdapter(
 
         fun bind(serie: SerieUIModel, position: Int) {
             with(binding) {
-                binding.nameTextView.text = serie.name
-                binding.scoreTextView.text = serie.score.toPercent()
-                binding.posterImageView.loadImage(context, serie.imageUrl)
+                nameTextView.text = serie.name
+                scoreTextView.text = serie.score.toPercent()
+                posterImageView.loadImage(context, serie.imageUrl)
 
-                binding.root.setOnClickListener {
+                root.setOnClickListener {
                     onItemClicked(serie, position)
                 }
             }
