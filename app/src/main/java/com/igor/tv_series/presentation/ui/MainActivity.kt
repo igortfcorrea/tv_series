@@ -7,12 +7,14 @@ import com.igor.tv_series.databinding.ActivityMainBinding
 import com.igor.tv_series.presentation.helpers.fadeIn
 import com.igor.tv_series.presentation.helpers.fadeOut
 import com.igor.tv_series.presentation.helpers.hideSoftKeyboard
-import com.igor.tv_series.presentation.models.SerieUIModel
 import com.igor.tv_series.presentation.ui.serie_details.SerieDetailsActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private val seriesViewModel: SeriesViewModel by viewModel()
 
     private val linearLayoutManager = LinearLayoutManager(this)
     private var adapter: SeriesAdapter? = null
@@ -22,25 +24,27 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val list = listOf(
-            SerieUIModel(1, 0.997f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>"),
-            SerieUIModel(2, 0.897f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg","2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>"),
-            SerieUIModel(3, 0.9797f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>"),
-            SerieUIModel(4, 0.6f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>"),
-            SerieUIModel(5, 0.95f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>"),
-            SerieUIModel(6, 0.123f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>"),
-            SerieUIModel(7, 0.111f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>"),
-            SerieUIModel(8, 0.97f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>"),
-            SerieUIModel(9, 0.987f, "Ozark", "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg", "2013-04-05", "2013-04-05", listOf("Drama", "Thriller", "Science-Fiction"), "<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>")
-        )
+        setupAdapter()
+
+        setupListeners()
+
+        setupObservers()
+
+        seriesViewModel.fetchSeries()
+    }
+
+    private fun setupAdapter() {
         binding.seriesRecyclerView.layoutManager = linearLayoutManager
         adapter = SeriesAdapter(this) { serie, _ ->
             startActivity(SerieDetailsActivity.getIntent(this, serie))
         }
         binding.seriesRecyclerView.adapter = adapter
-        adapter?.submitList(list)
+    }
 
-        setupListeners()
+    private fun setupObservers() {
+        seriesViewModel.series.observe(this) { series ->
+            adapter?.submitList(series)
+        }
     }
 
     private fun setupListeners() {

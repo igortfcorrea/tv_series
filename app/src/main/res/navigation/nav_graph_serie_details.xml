@@ -15,7 +15,7 @@
             app:destination="@id/episodeFragment">
             <argument
                 android:name="EPISODE"
-                app:argType="com.igor.tv_series.models.EpisodeUIModel" />
+                app:argType="com.igor.tv_series.presentation.models.EpisodeUIModel" />
         </action>
     </fragment>
 
