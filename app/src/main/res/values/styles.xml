@@ -15,4 +15,18 @@
         <item name="android:paddingStart">@dimen/spacing_16</item>
         <item name="android:paddingEnd">@dimen/spacing_16</item>
     </style>
+
+    <style name="TextViewSerieName">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="TextViewSerieScore">
+        <item name="android:textColor">@color/primary_blue</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:maxLines">1</item>
+    </style>
 </resources>
