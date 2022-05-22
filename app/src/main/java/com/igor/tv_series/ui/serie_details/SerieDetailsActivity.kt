@@ -4,37 +4,37 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.fragment.NavHostFragment
 import com.igor.tv_series.R
 import com.igor.tv_series.databinding.ActivitySerieDetailsBinding
-import com.igor.tv_series.helpers.loadImage
 import com.igor.tv_series.models.SerieUIModel
 
 class SerieDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySerieDetailsBinding
-    private val serie by lazy { intent?.extras?.getParcelable<SerieUIModel>(SERIE_EXTRA) }
+
+    private val serie by lazy { intent?.extras?.getParcelable<SerieUIModel>("SERIE") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySerieDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupSerieInformations()
+        setupFragment()
     }
 
-    private fun setupSerieInformations() {
-        serie?.let { serie ->
-            binding.imageView.loadImage(this, serie.imageUrl)
-            binding.serieNameTextView.text = serie.name
+    private fun setupFragment() {
+        val navHost = supportFragmentManager.findFragmentById(binding.fragmentContainerView.id) as NavHostFragment
+        val bundle = Bundle().apply {
+            this.putParcelable("SERIE", serie)
         }
+        navHost.navController.setGraph(R.navigation.nav_graph_serie_details, bundle)
     }
 
     companion object {
-        const val SERIE_EXTRA = "ACCOUNT_NAME_EXTRA"
-
         fun getIntent(context: Context, serie: SerieUIModel) =
             Intent(context, SerieDetailsActivity::class.java).apply {
-                putExtra(SERIE_EXTRA, serie)
+                putExtra("SERIE", serie)
             }
     }
 }

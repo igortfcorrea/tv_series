@@ -39,12 +39,15 @@ dependencies {
     implementation deps.androidx.core
     implementation deps.androidx.appcompat
     implementation deps.androidx.constraint
+    implementation deps.androidx.legacy
 
     implementation deps.material
 
     implementation deps.glide.main
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor deps.glide.compiler
+
+    implementation deps.navigation.fragment
+    implementation deps.navigation.ui
 
     testImplementation deps.junit
     androidTestImplementation deps.androidx.ext_junit

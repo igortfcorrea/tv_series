@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_serie_details"
+    app:startDestination="@id/serieDetailsFragment">
+
+    <fragment
+        android:id="@+id/serieDetailsFragment"
+        android:name="com.igor.tv_series.ui.serie_details.SerieDetailsFragment"
+        android:label="fragment_serie_details"
+        tools:layout="@layout/fragment_serie_details" >
+        <action
+            android:id="@+id/action_serieDetailsFragment_to_episodeFragment"
+            app:destination="@id/episodeFragment">
+            <argument
+                android:name="EPISODE"
+                app:argType="com.igor.tv_series.models.EpisodeUIModel" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/episodeFragment"
+        android:name="com.igor.tv_series.ui.serie_details.EpisodeFragment"
+        android:label="fragment_episode" />
+
+</navigation>

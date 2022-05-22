@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     android:padding="@dimen/spacing_24"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.serie_details.EpisodeFragment">
+    tools:context=".ui.serie_details.SerieDetailsFragment">
 
     <ImageView
-        android:id="@+id/episodeImageView"
+        android:id="@+id/imageView"
         android:layout_width="@dimen/medium_poster"
         android:layout_height="@dimen/medium_poster"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,25 +16,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/episodeNameTextView"
+        android:id="@+id/serieNameTextView"
         style="@style/TextViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/episodeImageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:text="Ozark" />
 
     <TextView
-        android:id="@+id/episodesTextView"
-        style="@style/TextViewH1"
+        android:id="@+id/airDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/serieNameTextView"
+        tools:text="2013-06-04" />
+
+    <TextView
+        android:id="@+id/airTimeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_16"
-        android:text="1Temp 2ep"
-        app:layout_constraintBottom_toBottomOf="@+id/episodeNameTextView"
-        app:layout_constraintStart_toEndOf="@+id/episodeNameTextView"
-        app:layout_constraintTop_toTopOf="@+id/episodeNameTextView" />
+        app:layout_constraintBottom_toBottomOf="@+id/airDateTextView"
+        app:layout_constraintStart_toEndOf="@+id/airDateTextView"
+        app:layout_constraintTop_toBottomOf="@+id/serieNameTextView"
+        tools:text="22:00" />
 
     <TextView
         android:id="@+id/summaryTextView"
@@ -43,8 +49,25 @@
         android:layout_marginTop="@dimen/spacing_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/episodeNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/airDateTextView"
         tools:text="When the residents of Chester's Mill find themselves trapped under a massive transparent dome with no way out, they struggle to survive as resources rapidly dwindle and panic quickly escalates." />
 
+    <TextView
+        android:id="@+id/episodesTextView"
+        style="@style/TextViewH1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/summaryTextView"
+        android:text="@string/episodes"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/episodesTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
