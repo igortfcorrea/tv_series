@@ -7,7 +7,8 @@ import org.koin.dsl.module
 val presentationModule = module {
     viewModel {
         SeriesViewModel(
-            fetchSeries = get()
+            fetchSeries = get(),
+            searchSeries = get()
         )
     }
 }

@@ -15,10 +15,10 @@ data class EpisodeUIModel(
 
 fun EpisodeModel.toUIModel(): EpisodeUIModel {
     return EpisodeUIModel(
-        name = this.name,
-        number = this.number,
-        season = this.season,
-        summary = this.summary,
+        name = this.name ?: "",
+        number = this.number ?: 0,
+        season = this.season ?: 0,
+        summary = this.summary ?: "",
         imageUrl = this.imageUrl
     )
 }

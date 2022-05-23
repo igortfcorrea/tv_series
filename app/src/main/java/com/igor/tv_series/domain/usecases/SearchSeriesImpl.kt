@@ -3,24 +3,20 @@ package com.igor.tv_series.domain.usecases
 import com.igor.tv_series.data.repositories.SeriesRepository
 import com.igor.tv_series.domain.Empty
 import com.igor.tv_series.domain.Error
-import com.igor.tv_series.domain.Success
 import com.igor.tv_series.domain.State
+import com.igor.tv_series.domain.Success
 import com.igor.tv_series.domain.models.SerieModel
 import com.igor.tv_series.domain.models.toModel
 
-internal class FetchSeriesImpl(
+internal class SearchSeriesImpl(
     private val seriesRepository: SeriesRepository
-) : FetchSeries {
+) : SearchSeries {
 
-    private var currentPage = 0
+    override suspend fun invoke(term: String): State<List<SerieModel>> {
+        val searchSeriesResult = seriesRepository.searchSeries(term)
 
-    override suspend fun invoke(): State<List<SerieModel>> {
-        val fetchSeriesResult = seriesRepository.fetchSeries(currentPage)
-
-        return if (fetchSeriesResult.isSuccess) {
-            this.currentPage++
-
-            fetchSeriesResult.getOrNull()?.map { serieDto ->
+        return if (searchSeriesResult.isSuccess) {
+            searchSeriesResult.getOrNull()?.map { serieDto ->
                 serieDto.toModel()
             }?.let { series ->
                 Success(series)
@@ -28,11 +24,8 @@ internal class FetchSeriesImpl(
                 Empty()
             }
         } else {
-            Error(fetchSeriesResult.exceptionOrNull()?.message)
+            Error(searchSeriesResult.exceptionOrNull()?.message)
         }
     }
 
-    override suspend fun onSearched() {
-        this.currentPage = 0
-    }
 }

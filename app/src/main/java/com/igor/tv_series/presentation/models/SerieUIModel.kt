@@ -19,12 +19,12 @@ data class SerieUIModel(
 fun SerieModel.toUIModel(): SerieUIModel {
     return SerieUIModel(
         id = this.id,
-        score = this.rating.average,
-        name = this.name,
-        imageUrl = this.image.medium,
-        premiered = this.premiered,
+        score = this.rating?.average ?: 0f,
+        name = this.name ?: "",
+        imageUrl = this.image?.medium ?: "",
+        premiered = this.premiered ?: "",
         ended = this.ended,
-        genres = this.genres,
-        summary = this.summary
+        genres = this.genres ?: emptyList(),
+        summary = this.summary ?: ""
     )
 }

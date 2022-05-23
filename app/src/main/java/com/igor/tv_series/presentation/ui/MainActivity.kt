@@ -2,8 +2,10 @@ package com.igor.tv_series.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextWatcher
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.igor.tv_series.databinding.ActivityMainBinding
+import com.igor.tv_series.presentation.helpers.EditTextWatcher
 import com.igor.tv_series.presentation.helpers.fadeIn
 import com.igor.tv_series.presentation.helpers.fadeOut
 import com.igor.tv_series.presentation.helpers.hideSoftKeyboard
@@ -18,6 +20,11 @@ class MainActivity : AppCompatActivity() {
 
     private val linearLayoutManager = LinearLayoutManager(this)
     private var adapter: SeriesAdapter? = null
+
+    private val editTextWatcher: TextWatcher =
+        EditTextWatcher { term ->
+            seriesViewModel.search(term)
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +49,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
+        binding.searchSerieLayout.searchEditText.addTextChangedListener(editTextWatcher)
+
         seriesViewModel.series.observe(this) { series ->
             adapter?.submitList(series)
         }
