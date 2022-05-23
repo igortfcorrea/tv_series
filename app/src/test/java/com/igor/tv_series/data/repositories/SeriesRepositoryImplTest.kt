@@ -8,7 +8,7 @@ import com.igor.tv_series.data.models.SerieDto
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
-import junit.framework.TestCase
+import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
@@ -20,7 +20,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
-class SeriesRepositoryImplTest : TestCase() {
+class SeriesRepositoryImplTest {
 
     @Mock
     private lateinit var seriesService: SeriesService
