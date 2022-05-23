@@ -10,6 +10,7 @@ import com.igor.tv_series.domain.usecases.SearchSeries
 import com.igor.tv_series.presentation.models.SerieUIModel
 import com.igor.tv_series.presentation.models.toUIModel
 import kotlinx.coroutines.launch
+import okhttp3.internal.toImmutableList
 
 class SeriesViewModel(
     private val fetchSeries: FetchSeries,
@@ -20,12 +21,18 @@ class SeriesViewModel(
     val series: LiveData<List<SerieUIModel>>
         get() = _series
 
-    fun fetchSeries() {
+    fun fetchSeries(refreshList: Boolean = false) {
         viewModelScope.launch {
             fetchSeries.invoke().also { series ->
                 when (series) {
                     is Success -> {
-                        _series.value = series.result.map { it.toUIModel() }
+                        if (refreshList)
+                            _series.value = series.result.map { it.toUIModel() }
+                        else {
+                            val newList = _series.value?.toMutableList() ?: mutableListOf()
+                            newList.addAll(series.result.map { it.toUIModel() })
+                            _series.value = newList
+                        }
                     }
                 }
             }
@@ -45,7 +52,7 @@ class SeriesViewModel(
                 }
             }
         } else {
-            fetchSeries()
+            fetchSeries(true)
         }
     }
 }

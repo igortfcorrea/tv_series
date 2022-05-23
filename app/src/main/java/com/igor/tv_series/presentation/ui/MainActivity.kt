@@ -3,7 +3,9 @@ package com.igor.tv_series.presentation.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextWatcher
+import android.widget.AbsListView
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.igor.tv_series.databinding.ActivityMainBinding
 import com.igor.tv_series.presentation.helpers.EditTextWatcher
 import com.igor.tv_series.presentation.helpers.fadeIn
@@ -70,6 +72,16 @@ class MainActivity : AppCompatActivity() {
             binding.searchSerieLayout.searchEditText.clearFocus()
             binding.searchSerieLayout.searchEditText.text.clear()
         }
+
+        binding.seriesRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+
+                if (!recyclerView.canScrollVertically(1)) {
+                    seriesViewModel.fetchSeries()
+                }
+            }
+        })
     }
 
     private fun showClearSearch() {
