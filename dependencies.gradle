@@ -18,7 +18,11 @@ ext.versions = [
         retrofit2: '2.9.0',
         koin : '3.1.2',
         okhttp3 : '4.2.2',
-        okhttp3_interceptor : '3.4.1'
+        okhttp3_interceptor : '3.4.1',
+        mockito : '3.12.4',
+        mockito_android: '3.12.4',
+        mockito_kotlin : '2.2.0',
+        coroutines: '1.5.0'
 ]
 
 ext.deps = [
@@ -60,5 +64,17 @@ ext.deps = [
         'okhttp3' : [
                 okhttp : "com.squareup.okhttp3:okhttp:${versions.okhttp3}",
                 interceptor : "com.squareup.okhttp3:logging-interceptor:${versions.okhttp3_interceptor}"
+        ],
+
+        'coroutines': [
+                android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}",
+                coroutinestest: "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutines}"
+        ],
+
+        'mockito' : [
+                core : "org.mockito:mockito-core:${versions.mockito}",
+                inline :  "org.mockito:mockito-inline:${versions.mockito}",
+                mockito_kotlin : "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockito_kotlin}",
+                mockito_android: "org.mockito:mockito-android:${versions.mockito_android}"
         ]
 ]

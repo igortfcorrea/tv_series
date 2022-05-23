@@ -58,6 +58,14 @@ dependencies {
     implementation deps.okhttp3.okhttp
     implementation deps.okhttp3.interceptor
 
+    testImplementation deps.mockito.core
+    testImplementation deps.mockito.inline
+    testImplementation deps.mockito.mockito_kotlin
+    androidTestImplementation deps.mockito.mockito_android
+
+    implementation deps.coroutines.android
+    testImplementation deps.coroutines.coroutinestest
+
     testImplementation deps.junit
     androidTestImplementation deps.androidx.ext_junit
     androidTestImplementation deps.androidx.espresso_core

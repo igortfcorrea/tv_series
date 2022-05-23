@@ -11,7 +11,7 @@ interface SeriesRepository {
 
     suspend fun searchSeries(searchTerm: String): Result<List<SearchSerieDto>>
 
-    suspend fun fetchEpisodes(serieId: Int): Result<List<EpisodeDto>>
+    suspend fun fetchEpisodes(seasonId: Int): Result<List<EpisodeDto>>
 
     suspend fun fetchSeasons(serieId: Int): Result<List<SeasonDto>>
 }
