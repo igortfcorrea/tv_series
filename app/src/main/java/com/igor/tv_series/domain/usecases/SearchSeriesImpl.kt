@@ -7,13 +7,19 @@ import com.igor.tv_series.domain.State
 import com.igor.tv_series.domain.Success
 import com.igor.tv_series.domain.models.SerieModel
 import com.igor.tv_series.domain.models.toModel
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 internal class SearchSeriesImpl(
-    private val seriesRepository: SeriesRepository
+    private val seriesRepository: SeriesRepository,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : SearchSeries {
 
     override suspend fun invoke(term: String): State<List<SerieModel>> {
-        val searchSeriesResult = seriesRepository.searchSeries(term)
+        val searchSeriesResult = withContext(ioDispatcher) {
+            seriesRepository.searchSeries(term)
+        }
 
         return if (searchSeriesResult.isSuccess) {
             searchSeriesResult.getOrNull()?.map { serieDto ->

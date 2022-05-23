@@ -7,15 +7,21 @@ import com.igor.tv_series.domain.Success
 import com.igor.tv_series.domain.State
 import com.igor.tv_series.domain.models.SerieModel
 import com.igor.tv_series.domain.models.toModel
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 internal class FetchSeriesImpl(
-    private val seriesRepository: SeriesRepository
+    private val seriesRepository: SeriesRepository,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : FetchSeries {
 
     private var currentPage = 0
 
     override suspend fun invoke(): State<List<SerieModel>> {
-        val fetchSeriesResult = seriesRepository.fetchSeries(currentPage)
+        val fetchSeriesResult = withContext(ioDispatcher) {
+            seriesRepository.fetchSeries(currentPage)
+        }
 
         return if (fetchSeriesResult.isSuccess) {
             this.currentPage++
