@@ -18,7 +18,7 @@ interface SeriesRepository {
 
     suspend fun fetchFavoriteSeries(): Result<List<FavoriteSeries>>
 
-    suspend fun insertAll(favoriteSeries: List<FavoriteSeries>)
+    suspend fun insertFavoriteSeries(favoriteSeries: List<FavoriteSeries>)
 
-    suspend fun delete(favoriteSeries: List<FavoriteSeries>)
+    suspend fun deleteFavoriteSeries(favoriteSeries: List<FavoriteSeries>)
 }

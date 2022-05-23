@@ -1,5 +1,7 @@
 package com.igor.tv_series.data.repositories
 
+import com.igor.tv_series.data.entities.FavoriteSeries
+import com.igor.tv_series.data.infra.FavoriteSeriesDao
 import com.igor.tv_series.data.infra.SeriesService
 import com.igor.tv_series.data.models.EpisodeDto
 import com.igor.tv_series.data.models.SearchSerieDto
@@ -25,12 +27,16 @@ class SeriesRepositoryImplTest {
     @Mock
     private lateinit var seriesService: SeriesService
 
+    @Mock
+    private lateinit var favoriteSeriesDao: FavoriteSeriesDao
+
     private lateinit var seriesRepositoryImpl: SeriesRepository
 
     @Before
     fun setup() {
         seriesRepositoryImpl = SeriesRepositoryImpl(
-            seriesService = seriesService
+            seriesService = seriesService,
+            favoriteSeriesDao = favoriteSeriesDao
         )
     }
 
@@ -116,5 +122,42 @@ class SeriesRepositoryImplTest {
         val response = seriesRepositoryImpl.fetchSeasons(serieId)
 
         assertEquals(Result.success(expected), response)
+    }
+
+    @Test
+    fun fetchFavoriteSeriesShouldCallGetAllFromDao() = runBlockingTest {
+        seriesRepositoryImpl.fetchFavoriteSeries()
+
+        Mockito.verify(favoriteSeriesDao, times(1)).getAll()
+    }
+
+    @Test
+    fun fetchFavoriteSeriesShouldReturnCorrectData() = runBlockingTest {
+        val favoriteSeries = listOf(mock<FavoriteSeries>())
+        val expected = Result.success(favoriteSeries)
+        Mockito.`when`(favoriteSeriesDao.getAll())
+            .thenReturn(favoriteSeries)
+
+        val response = seriesRepositoryImpl.fetchFavoriteSeries()
+
+        assertEquals(expected, response)
+    }
+
+    @Test
+    fun insertFavoriteSeriesShouldCallGetAllFromDao() = runBlockingTest {
+        val favoriteSeries = listOf(mock<FavoriteSeries>())
+
+        seriesRepositoryImpl.insertFavoriteSeries(favoriteSeries)
+
+        Mockito.verify(favoriteSeriesDao, times(1)).insertAll(favoriteSeries)
+    }
+
+    @Test
+    fun deleteFavoriteSeriesShouldCallGetAllFromDao() = runBlockingTest {
+        val favoriteSeries = listOf(mock<FavoriteSeries>())
+
+        seriesRepositoryImpl.deleteFavoriteSeries(favoriteSeries)
+
+        Mockito.verify(favoriteSeriesDao, times(1)).delete(favoriteSeries)
     }
 }

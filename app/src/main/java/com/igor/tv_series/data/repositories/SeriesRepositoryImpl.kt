@@ -46,11 +46,11 @@ internal class SeriesRepositoryImpl(
         }
     }
 
-    override suspend fun insertAll(favoriteSeries: List<FavoriteSeries>) {
+    override suspend fun insertFavoriteSeries(favoriteSeries: List<FavoriteSeries>) {
         return favoriteSeriesDao.insertAll(favoriteSeries)
     }
 
-    override suspend fun delete(favoriteSeries: List<FavoriteSeries>) {
+    override suspend fun deleteFavoriteSeries(favoriteSeries: List<FavoriteSeries>) {
         return favoriteSeriesDao.delete(favoriteSeries)
     }
 }
