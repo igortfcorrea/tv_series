@@ -33,6 +33,11 @@ android {
     buildFeatures {
         viewBinding true
     }
+    testOptions {
+        // Used for Unit testing Android dependent elements in /test folder
+        unitTests.includeAndroidResources  = true
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -40,6 +45,7 @@ dependencies {
     implementation deps.androidx.appcompat
     implementation deps.androidx.constraint
     implementation deps.androidx.legacy
+    testImplementation deps.androidx.core_testing
 
     implementation deps.material
 
