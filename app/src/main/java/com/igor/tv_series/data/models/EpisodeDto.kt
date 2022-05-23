@@ -5,5 +5,5 @@ data class EpisodeDto(
     val number: Int?,
     val season: Int?,
     val summary: String?,
-    val imageUrl: String? = null
+    val image: ImageDto? = null
 )

@@ -2,6 +2,7 @@ package com.igor.tv_series.data.infra
 
 import com.igor.tv_series.data.models.EpisodeDto
 import com.igor.tv_series.data.models.SearchSerieDto
+import com.igor.tv_series.data.models.SeasonDto
 import com.igor.tv_series.data.models.SerieDto
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,8 +19,13 @@ internal interface SeriesService {
         @Query("q") query: String
     ) : List<SearchSerieDto>
 
-    @GET("shows/{serieId}/episodes")
-    suspend fun episodes(
-        @Path("serieId") serieId: Int
+    @GET("seasons/{seasonId}/episodes")
+    suspend fun episodesBySeason(
+        @Path("seasonId") seasonId: Int
     ) : List<EpisodeDto>
+
+    @GET("shows/{serieId}/seasons")
+    suspend fun seasons(
+        @Path("serieId") serieId: Int
+    ) : List<SeasonDto>
 }

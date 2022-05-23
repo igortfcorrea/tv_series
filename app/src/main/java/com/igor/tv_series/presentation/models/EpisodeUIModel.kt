@@ -19,6 +19,6 @@ fun EpisodeModel.toUIModel(): EpisodeUIModel {
         number = this.number ?: 0,
         season = this.season ?: 0,
         summary = this.summary ?: "",
-        imageUrl = this.imageUrl
+        imageUrl = this.image?.medium
     )
 }

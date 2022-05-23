@@ -16,16 +16,16 @@ class SeriesViewModel(
     private val searchSeries: SearchSeries
 ) : ViewModel() {
 
-    private val mutableSeries = MutableLiveData<List<SerieUIModel>>()
+    private val _series = MutableLiveData<List<SerieUIModel>>()
     val series: LiveData<List<SerieUIModel>>
-        get() = mutableSeries
+        get() = _series
 
     fun fetchSeries() {
         viewModelScope.launch {
             fetchSeries.invoke().also { series ->
                 when (series) {
                     is Success -> {
-                        mutableSeries.value = series.result.map { it.toUIModel() }
+                        _series.value = series.result.map { it.toUIModel() }
                     }
                 }
             }
@@ -39,11 +39,13 @@ class SeriesViewModel(
                 searchSeries.invoke(term.trim()).also { series ->
                     when (series) {
                         is Success -> {
-                            mutableSeries.value = series.result.map { it.toUIModel() }
+                            _series.value = series.result.map { it.toUIModel() }
                         }
                     }
                 }
             }
+        } else {
+            fetchSeries()
         }
     }
 }

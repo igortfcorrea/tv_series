@@ -23,4 +23,10 @@ val domainModule = module {
             seriesRepository = get()
         )
     }
+
+    single<FetchSeasons> {
+        FetchSeasonsImpl(
+            seriesRepository = get()
+        )
+    }
 }

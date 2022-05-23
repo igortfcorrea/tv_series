@@ -3,20 +3,20 @@ package com.igor.tv_series.domain.usecases
 import com.igor.tv_series.data.repositories.SeriesRepository
 import com.igor.tv_series.domain.Empty
 import com.igor.tv_series.domain.Error
-import com.igor.tv_series.domain.Success
 import com.igor.tv_series.domain.State
-import com.igor.tv_series.domain.models.EpisodeModel
+import com.igor.tv_series.domain.Success
+import com.igor.tv_series.domain.models.SeasonModel
 import com.igor.tv_series.domain.models.toModel
 
-internal class FetchEpisodesImpl(
+internal class FetchSeasonsImpl(
     private val seriesRepository: SeriesRepository
-) : FetchEpisodes {
+) : FetchSeasons {
 
-    override suspend fun invoke(seasonId: Int): State<List<EpisodeModel>> {
-        val fetchEpisodesResult = seriesRepository.fetchEpisodes(seasonId)
+    override suspend fun invoke(serieId: Int): State<List<SeasonModel>> {
+        val fetchSeasonsResult = seriesRepository.fetchSeasons(serieId)
 
-        return if (fetchEpisodesResult.isSuccess) {
-            fetchEpisodesResult.getOrNull()?.map { episodeDto ->
+        return if (fetchSeasonsResult.isSuccess) {
+            fetchSeasonsResult.getOrNull()?.map { episodeDto ->
                 episodeDto.toModel()
             }?.let { episodes ->
                 Success(episodes)
@@ -24,7 +24,7 @@ internal class FetchEpisodesImpl(
                 Empty()
             }
         } else {
-            Error(fetchEpisodesResult.exceptionOrNull()?.message)
+            Error(fetchSeasonsResult.exceptionOrNull()?.message)
         }
     }
 

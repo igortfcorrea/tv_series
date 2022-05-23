@@ -2,6 +2,7 @@ package com.igor.tv_series.data.repositories
 
 import com.igor.tv_series.data.models.EpisodeDto
 import com.igor.tv_series.data.models.SearchSerieDto
+import com.igor.tv_series.data.models.SeasonDto
 import com.igor.tv_series.data.models.SerieDto
 
 interface SeriesRepository {
@@ -12,4 +13,5 @@ interface SeriesRepository {
 
     suspend fun fetchEpisodes(serieId: Int): Result<List<EpisodeDto>>
 
+    suspend fun fetchSeasons(serieId: Int): Result<List<SeasonDto>>
 }

@@ -44,6 +44,7 @@ class EpisodeFragment : Fragment() {
             binding.episodeImageView.loadImage(requireContext(), url)
         }
         binding.episodeNameTextView.text = episode?.name
+        binding.episodesTextView.text = "Season ${episode?.season} - Episode ${episode?.number}"
         binding.episodeSummaryTextView.text =
             Html.fromHtml(episode?.summary, Html.FROM_HTML_MODE_COMPACT)
     }

@@ -7,7 +7,7 @@ data class EpisodeModel(
     val number: Int?,
     val season: Int?,
     val summary: String?,
-    val imageUrl: String? = null
+    val image: ImageModel? = null
 )
 
 fun EpisodeDto.toModel(): EpisodeModel {
@@ -16,6 +16,6 @@ fun EpisodeDto.toModel(): EpisodeModel {
         number = this.number,
         season = this.season,
         summary = this.summary,
-        imageUrl = this.imageUrl
+        image = this.image?.toModel()
     )
 }

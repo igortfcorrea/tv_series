@@ -4,6 +4,7 @@ import com.igor.tv_series.data.infra.SeriesService
 import com.igor.tv_series.data.infra.safeApiCall
 import com.igor.tv_series.data.models.EpisodeDto
 import com.igor.tv_series.data.models.SearchSerieDto
+import com.igor.tv_series.data.models.SeasonDto
 import com.igor.tv_series.data.models.SerieDto
 
 internal class SeriesRepositoryImpl(
@@ -22,9 +23,15 @@ internal class SeriesRepositoryImpl(
         }
     }
 
-    override suspend fun fetchEpisodes(serieId: Int): Result<List<EpisodeDto>> {
+    override suspend fun fetchEpisodes(seasonId: Int): Result<List<EpisodeDto>> {
         return safeApiCall {
-            seriesService.episodes(serieId)
+            seriesService.episodesBySeason(seasonId)
+        }
+    }
+
+    override suspend fun fetchSeasons(serieId: Int): Result<List<SeasonDto>> {
+        return safeApiCall {
+            seriesService.seasons(serieId)
         }
     }
 }

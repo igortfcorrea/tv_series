@@ -6,27 +6,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.navigation.fragment.findNavController
 import com.igor.tv_series.R
 import com.igor.tv_series.databinding.FragmentSerieDetailsBinding
 import com.igor.tv_series.presentation.helpers.loadImage
-import com.igor.tv_series.presentation.models.EpisodeUIModel
 import com.igor.tv_series.presentation.models.SerieUIModel
 import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SerieDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentSerieDetailsBinding
+    private val serieDetailsViewModel: SerieDetailsViewModel by viewModel()
 
     private var serie: SerieUIModel? = null
-    private var episode: EpisodeUIModel = EpisodeUIModel(
-        "Pilot",
-        1,
-        1,
-        "When the residents of Chester's Mill find themselves trapped under a massive transparent dome with no way out, they struggle to survive as resources rapidly dwindle and panic quickly escalates.",
-        "https://static.tvmaze.com/uploads/images/medium_landscape/1/4388.jpg"
-    )
+    private var adapter: EpisodesAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,12 +43,43 @@ class SerieDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupObservers()
+
+        setupListeners()
+
         setupSerieInformations()
 
-        setupSpinner()
+        setupAdapter()
 
+        serie?.id?.let {
+            serieDetailsViewModel.fetchSeasons(it)
+        }
+    }
+
+    private fun setupListeners() {
+        binding.seasonSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                serieDetailsViewModel.setSeason(position)
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) = Unit
+
+        }
+    }
+
+    private fun setupObservers() {
+        serieDetailsViewModel.episodes.observe(viewLifecycleOwner) { episodes ->
+            adapter?.submitList(episodes)
+        }
+
+        serieDetailsViewModel.seasons.observe(viewLifecycleOwner) { seasons ->
+            setupSpinner(seasons.map { it.number })
+        }
+    }
+
+    private fun setupAdapter() {
         binding.episodesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val adapter = EpisodesAdapter(requireContext()) { episode, position ->
+        adapter = EpisodesAdapter(requireContext()) { episode, _ ->
             val bundle = Bundle().apply {
                 this.putParcelable("EPISODE", episode)
             }
@@ -62,14 +89,13 @@ class SerieDetailsFragment : Fragment() {
             )
         }
         binding.episodesRecyclerView.adapter = adapter
-        adapter.submitList(listOf(episode, episode, episode, episode, episode, episode, episode, episode, episode, episode, episode, episode))
     }
 
-    private fun setupSpinner() {
+    private fun setupSpinner(list: List<String>) {
         val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
             requireContext(),
             android.R.layout.simple_spinner_item,
-            listOf("Season 1", "Season 2", "Season 3", "Season 4")
+            list
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.seasonSpinner.adapter = adapter
