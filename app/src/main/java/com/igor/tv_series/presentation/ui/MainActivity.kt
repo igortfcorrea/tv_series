@@ -78,7 +78,8 @@ class MainActivity : AppCompatActivity() {
                 super.onScrollStateChanged(recyclerView, newState)
 
                 if (!recyclerView.canScrollVertically(1)) {
-                    seriesViewModel.fetchSeries()
+                    if (!seriesViewModel.isFetchingSeries())
+                        seriesViewModel.fetchSeries()
                 }
             }
         })

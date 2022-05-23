@@ -21,8 +21,11 @@ class SeriesViewModel(
     val series: LiveData<List<SerieUIModel>>
         get() = _series
 
+    private var isFetchingSeries = false
+
     fun fetchSeries(refreshList: Boolean = false) {
         viewModelScope.launch {
+            isFetchingSeries = true
             fetchSeries.invoke().also { series ->
                 when (series) {
                     is Success -> {
@@ -35,6 +38,7 @@ class SeriesViewModel(
                         }
                     }
                 }
+                isFetchingSeries = false
             }
         }
     }
@@ -42,6 +46,7 @@ class SeriesViewModel(
     fun search(term: String?) {
         if (!term.isNullOrBlank()) {
             viewModelScope.launch {
+                isFetchingSeries = true
                 fetchSeries.onSearched()
                 searchSeries.invoke(term.trim()).also { series ->
                     when (series) {
@@ -49,10 +54,15 @@ class SeriesViewModel(
                             _series.value = series.result.map { it.toUIModel() }
                         }
                     }
+                    isFetchingSeries = false
                 }
             }
         } else {
             fetchSeries(true)
         }
+    }
+
+    fun isFetchingSeries(): Boolean {
+        return isFetchingSeries
     }
 }
