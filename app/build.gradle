@@ -72,6 +72,10 @@ dependencies {
     implementation deps.coroutines.android
     testImplementation deps.coroutines.coroutinestest
 
+    implementation deps.room.runtime
+    implementation deps.room.coroutines
+    annotationProcessor deps.room.compiler
+
     testImplementation deps.junit
     androidTestImplementation deps.androidx.ext_junit
     androidTestImplementation deps.androidx.espresso_core

@@ -19,7 +19,8 @@ val dataModule = module {
 
     single<SeriesRepository> {
         SeriesRepositoryImpl(
-            seriesService = get()
+            seriesService = get(),
+            favoriteSeriesDao = get()
         )
     }
 }

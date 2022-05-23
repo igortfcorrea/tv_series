@@ -23,7 +23,8 @@ ext.versions = [
         mockito_android: '3.12.4',
         mockito_kotlin : '2.2.0',
         coroutines: '1.5.0',
-        core_testing: '2.1.0'
+        core_testing: '2.1.0',
+        room: '2.4.0'
 ]
 
 ext.deps = [
@@ -73,10 +74,16 @@ ext.deps = [
                 coroutinestest: "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutines}"
         ],
 
-        'mockito' : [
+        'mockito': [
                 core : "org.mockito:mockito-core:${versions.mockito}",
                 inline :  "org.mockito:mockito-inline:${versions.mockito}",
                 mockito_kotlin : "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockito_kotlin}",
                 mockito_android: "org.mockito:mockito-android:${versions.mockito_android}"
+        ],
+
+        'room': [
+                runtime: "androidx.room:room-runtime:${versions.room}",
+                compiler: "androidx.room:room-compiler:${versions.room}",
+                coroutines: "androidx.room:room-ktx:${versions.room}"
         ]
 ]
