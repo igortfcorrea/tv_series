@@ -6,9 +6,7 @@ import com.igor.tv_series.domain.Success
 import com.igor.tv_series.domain.models.EpisodeModel
 import com.igor.tv_series.domain.models.SeasonModel
 import com.igor.tv_series.domain.usecases.*
-import com.igor.tv_series.presentation.models.EpisodeUIModel
-import com.igor.tv_series.presentation.models.SeasonUIModel
-import com.igor.tv_series.presentation.models.toUIModel
+import com.igor.tv_series.presentation.models.*
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
@@ -51,6 +49,9 @@ class SerieDetailsViewModelTest {
     @Mock
     private lateinit var seasonsObserver: Observer<List<SeasonUIModel>>
 
+    @Mock
+    private lateinit var isFavoriteObserver: Observer<Boolean>
+
     private lateinit var seriesDetailsViewModel: SerieDetailsViewModel
 
     @Before
@@ -65,12 +66,14 @@ class SerieDetailsViewModelTest {
 
         seriesDetailsViewModel.episodes.observeForever(episodesObserver)
         seriesDetailsViewModel.seasons.observeForever(seasonsObserver)
+        seriesDetailsViewModel.isFavorite.observeForever(isFavoriteObserver)
     }
 
     @After
     fun tearDown() {
         seriesDetailsViewModel.episodes.removeObserver(episodesObserver)
         seriesDetailsViewModel.seasons.removeObserver(seasonsObserver)
+        seriesDetailsViewModel.isFavorite.removeObserver(isFavoriteObserver)
     }
 
     @Test
@@ -137,5 +140,56 @@ class SerieDetailsViewModelTest {
         seriesDetailsViewModel.setSeason(10)
 
         Mockito.verifyNoInteractions(fetchEpisodes)
+    }
+
+    @Test
+    fun favoriteSerieShouldCallInserteFavoriteSerie() = runBlockingTest {
+        val serie = SerieUIModel(1, 2f, "", "", "",
+            "", "", "")
+
+        seriesDetailsViewModel.favoriteSerie(serie)
+
+        Mockito.verify(insertFavoriteSeries, times(1)).invoke(listOf(serie.toModel()))
+    }
+
+    @Test
+    fun deleteSerieShouldCallDeleteFavoriteSerie() = runBlockingTest {
+        val serie = SerieUIModel(1, 2f, "", "", "",
+            "", "", "")
+
+        seriesDetailsViewModel.deleteSerie(serie)
+
+        Mockito.verify(deleteFavoriteSeries, times(1)).invoke(listOf(serie.toModel()))
+    }
+
+    @Test
+    fun isAFavoriteSerieShouldCallIsAFavoriteSerie() = runBlockingTest {
+        val id = 1
+
+        seriesDetailsViewModel.isAFavoriteSerie(id)
+
+        Mockito.verify(isAFavoriteSerie, times(1)).invoke(id)
+    }
+
+    @Test
+    fun isAFavoriteSerieShouldUpdateIsFavoriteValueToTrue() = runBlockingTest {
+        val id = 1
+        Mockito.`when`(isAFavoriteSerie.invoke(any()))
+            .thenReturn(true)
+
+        seriesDetailsViewModel.isAFavoriteSerie(id)
+
+        Mockito.verify(isFavoriteObserver).onChanged(true)
+    }
+
+    @Test
+    fun isAFavoriteSerieShouldUpdateIsFavoriteValueToFalse() = runBlockingTest {
+        val id = 1
+        Mockito.`when`(isAFavoriteSerie.invoke(any()))
+            .thenReturn(false)
+
+        seriesDetailsViewModel.isAFavoriteSerie(id)
+
+        Mockito.verify(isFavoriteObserver).onChanged(false)
     }
 }

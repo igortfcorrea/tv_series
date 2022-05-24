@@ -160,4 +160,13 @@ class SeriesRepositoryImplTest {
 
         Mockito.verify(favoriteSeriesDao, times(1)).delete(favoriteSeries)
     }
+
+    @Test
+    fun isAFavoriteSerieShouldCallIsAFavoriteSerieFromDao() = runBlockingTest {
+        val id = 1
+
+        seriesRepositoryImpl.isAFavoriteSerie(id)
+
+        Mockito.verify(favoriteSeriesDao, times(1)).isAFavoriteSerie(id)
+    }
 }
