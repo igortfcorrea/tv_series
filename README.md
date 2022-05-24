@@ -1,11 +1,11 @@
-## Implemented features
+## Features
 
-All the required features were implemented, the extra features implemented is:
+All mandatory features were implemented, the extra features implemented is:
 
 1. Allow the user to save a series as a favorite
 2. Allow the user to delete a series from the favorites list
 3. Allow the user to browse their favorite series in alphabetical order, and click on one to
-see its details
+   see its details
 4. Unit testing
 
 ## Versions to run the project
