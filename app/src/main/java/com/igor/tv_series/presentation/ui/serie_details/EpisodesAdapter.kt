@@ -1,6 +1,5 @@
 package com.igor.tv_series.presentation.ui.serie_details
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -9,7 +8,6 @@ import com.igor.tv_series.databinding.ItemEpisodeBinding
 import com.igor.tv_series.presentation.models.EpisodeUIModel
 
 class EpisodesAdapter(
-    private val context: Context,
     private val onItemClicked: (EpisodeUIModel, Int) -> Unit
 ) : ListAdapter<EpisodeUIModel, EpisodesAdapter.EpisodesAdapterViewHolder>(EpisodesDiffCallback()) {
 
@@ -20,7 +18,6 @@ class EpisodesAdapter(
             false
         )
         return EpisodesAdapterViewHolder(
-            context = context,
             binding = binding,
             onItemClicked = onItemClicked
         )
@@ -33,7 +30,6 @@ class EpisodesAdapter(
     }
 
     inner class EpisodesAdapterViewHolder(
-        private val context: Context,
         private val binding: ItemEpisodeBinding,
         private val onItemClicked: (EpisodeUIModel, Int) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {

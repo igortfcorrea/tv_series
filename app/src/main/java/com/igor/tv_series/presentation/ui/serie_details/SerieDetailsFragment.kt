@@ -101,7 +101,7 @@ class SerieDetailsFragment : Fragment() {
 
     private fun setupAdapter() {
         binding.episodesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = EpisodesAdapter(requireContext()) { episode, _ ->
+        adapter = EpisodesAdapter() { episode, _ ->
             val bundle = Bundle().apply {
                 this.putParcelable("EPISODE", episode)
             }

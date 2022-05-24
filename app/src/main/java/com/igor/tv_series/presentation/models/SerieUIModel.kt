@@ -5,6 +5,7 @@ import com.igor.tv_series.domain.models.FavoriteSerieModel
 import com.igor.tv_series.domain.models.ImageModel
 import com.igor.tv_series.domain.models.RatingModel
 import com.igor.tv_series.domain.models.SerieModel
+import com.igor.tv_series.presentation.helpers.toPercent
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -26,8 +27,8 @@ fun SerieModel.toUIModel(): SerieUIModel {
         score = this.rating?.average ?: 0f,
         name = this.name ?: "",
         imageUrl = this.image?.medium ?: "",
-        premiered = this.premiered ?: "",
-        ended = this.ended,
+        premiered = "Premiered: ${this.premiered}",
+        ended = "Ended: ${this.ended}",
         genres = this.genres?.joinToString() ?: "",
         summary = this.summary ?: ""
     )
