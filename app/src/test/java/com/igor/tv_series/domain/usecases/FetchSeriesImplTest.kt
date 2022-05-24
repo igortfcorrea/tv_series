@@ -65,7 +65,7 @@ class FetchSeriesImplTest {
 
         val response = fetchSeriesImpl.invoke() as Success
 
-        assertEquals(listOfSeries.map { it.toModel(favoriteSeries) }, response.result)
+        assertEquals(listOfSeries.map { it.toModel() }, response.result)
     }
 
     @Test

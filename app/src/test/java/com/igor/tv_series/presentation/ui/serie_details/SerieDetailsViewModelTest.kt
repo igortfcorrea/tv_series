@@ -5,8 +5,7 @@ import androidx.lifecycle.Observer
 import com.igor.tv_series.domain.Success
 import com.igor.tv_series.domain.models.EpisodeModel
 import com.igor.tv_series.domain.models.SeasonModel
-import com.igor.tv_series.domain.usecases.FetchEpisodes
-import com.igor.tv_series.domain.usecases.FetchSeasons
+import com.igor.tv_series.domain.usecases.*
 import com.igor.tv_series.presentation.models.EpisodeUIModel
 import com.igor.tv_series.presentation.models.SeasonUIModel
 import com.igor.tv_series.presentation.models.toUIModel
@@ -38,6 +37,15 @@ class SerieDetailsViewModelTest {
     private lateinit var fetchSeasons: FetchSeasons
 
     @Mock
+    private lateinit var insertFavoriteSeries: InsertFavoriteSeries
+
+    @Mock
+    private lateinit var deleteFavoriteSeries: DeleteFavoriteSeries
+
+    @Mock
+    private lateinit var isAFavoriteSerie: IsAFavoriteSerie
+
+    @Mock
     private lateinit var episodesObserver: Observer<List<EpisodeUIModel>>
 
     @Mock
@@ -49,7 +57,10 @@ class SerieDetailsViewModelTest {
     fun setup() {
         seriesDetailsViewModel = SerieDetailsViewModel(
             fetchEpisodes = fetchEpisodes,
-            fetchSeasons = fetchSeasons
+            fetchSeasons = fetchSeasons,
+            insertFavoriteSeries = insertFavoriteSeries,
+            deleteFavoriteSeries = deleteFavoriteSeries,
+            isAFavoriteSerie = isAFavoriteSerie
         )
 
         seriesDetailsViewModel.episodes.observeForever(episodesObserver)

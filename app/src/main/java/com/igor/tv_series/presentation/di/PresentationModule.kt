@@ -17,7 +17,7 @@ val presentationModule = module {
         SerieDetailsViewModel(
             fetchEpisodes = get(),
             fetchSeasons = get(),
-            favoriteSeries = get(),
+            insertFavoriteSeries = get(),
             deleteFavoriteSeries = get(),
             isAFavoriteSerie = get()
         )

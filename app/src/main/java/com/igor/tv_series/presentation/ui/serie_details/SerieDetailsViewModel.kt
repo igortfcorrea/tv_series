@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class SerieDetailsViewModel(
     private val fetchEpisodes: FetchEpisodes,
     private val fetchSeasons: FetchSeasons,
-    private val favoriteSeries: InsertFavoriteSeries,
+    private val insertFavoriteSeries: InsertFavoriteSeries,
     private val deleteFavoriteSeries: DeleteFavoriteSeries,
     private val isAFavoriteSerie: IsAFavoriteSerie
 ) : ViewModel() {
@@ -64,7 +64,7 @@ class SerieDetailsViewModel(
 
     fun favoriteSerie(serie: SerieUIModel) {
         viewModelScope.launch {
-            favoriteSeries.invoke(listOf(serie.toModel()))
+            insertFavoriteSeries.invoke(listOf(serie.toModel()))
         }
     }
 
