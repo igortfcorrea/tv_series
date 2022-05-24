@@ -1,6 +1,6 @@
 ## Features
 
-All the required features were implemented, the extra features implemented is:
+All required features were implemented, the extra features implemented are:
 
 1. Allow the user to save a series as a favorite
 2. Allow the user to delete a series from the favorites list
