@@ -1,16 +1,13 @@
 package com.igor.tv_series.presentation.ui
 
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextWatcher
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.AbsListView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.igor.tv_series.databinding.ActivityMainBinding
+import com.igor.tv_series.databinding.ActivitySeriesBinding
 import com.igor.tv_series.presentation.helpers.EditTextWatcher
 import com.igor.tv_series.presentation.helpers.fadeIn
 import com.igor.tv_series.presentation.helpers.fadeOut
@@ -18,9 +15,9 @@ import com.igor.tv_series.presentation.helpers.hideSoftKeyboard
 import com.igor.tv_series.presentation.ui.serie_details.SerieDetailsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class SeriesActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivitySeriesBinding
 
     private val seriesViewModel: SeriesViewModel by viewModel()
 
@@ -34,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivitySeriesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupAdapter()

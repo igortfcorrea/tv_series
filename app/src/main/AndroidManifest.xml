@@ -16,7 +16,7 @@
             android:name="com.igor.tv_series.presentation.ui.serie_details.SerieDetailsActivity"
             android:exported="true" />
         <activity
-            android:name="com.igor.tv_series.presentation.ui.MainActivity"
+            android:name="com.igor.tv_series.presentation.ui.SeriesActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>

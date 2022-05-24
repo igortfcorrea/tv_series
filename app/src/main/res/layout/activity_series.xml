@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    tools:context=".presentation.ui.MainActivity">
+    tools:context=".presentation.ui.SeriesActivity">
 
     <TextView
         android:id="@+id/mainTitleTextView"
