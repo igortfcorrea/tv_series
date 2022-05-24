@@ -18,7 +18,8 @@ val presentationModule = module {
             fetchEpisodes = get(),
             fetchSeasons = get(),
             favoriteSeries = get(),
-            deleteFavoriteSeries = get()
+            deleteFavoriteSeries = get(),
+            isAFavoriteSerie = get()
         )
     }
 }

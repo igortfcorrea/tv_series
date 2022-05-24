@@ -21,4 +21,6 @@ interface SeriesRepository {
     suspend fun insertFavoriteSeries(favoriteSeries: List<FavoriteSeries>)
 
     suspend fun deleteFavoriteSeries(favoriteSeries: List<FavoriteSeries>)
+
+    suspend fun isAFavoriteSerie(id: Int): Boolean
 }

@@ -52,4 +52,8 @@ internal class SeriesRepositoryImpl(
     override suspend fun deleteFavoriteSeries(favoriteSeries: List<FavoriteSeries>) {
         return favoriteSeriesDao.delete(favoriteSeries)
     }
+
+    override suspend fun isAFavoriteSerie(id: Int): Boolean {
+        return favoriteSeriesDao.isAFavoriteSerie(id)
+    }
 }

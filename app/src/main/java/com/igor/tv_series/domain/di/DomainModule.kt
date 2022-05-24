@@ -47,4 +47,10 @@ val domainModule = module {
             seriesRepository = get()
         )
     }
+
+    single<IsAFavoriteSerie> {
+        IsAFavoriteSerieImpl(
+            seriesRepository = get()
+        )
+    }
 }

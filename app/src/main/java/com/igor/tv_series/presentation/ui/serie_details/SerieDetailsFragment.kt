@@ -88,6 +88,15 @@ class SerieDetailsFragment : Fragment() {
         serieDetailsViewModel.seasons.observe(viewLifecycleOwner) { seasons ->
             setupSpinner(seasons.map { it.number })
         }
+
+        serieDetailsViewModel.isFavorite.observe(viewLifecycleOwner) { isFavorite ->
+            serie?.isFavorite = isFavorite
+            if (serie?.isFavorite == true) {
+                binding.favoriteStarImageView.setImageResource(R.drawable.ic_baseline_star_24)
+            } else {
+                binding.favoriteStarImageView.setImageResource(R.drawable.ic_baseline_star_border_24)
+            }
+        }
     }
 
     private fun setupAdapter() {
@@ -116,6 +125,7 @@ class SerieDetailsFragment : Fragment() {
 
     private fun setupSerieInformations() {
         serie?.let { serie ->
+            serieDetailsViewModel.isAFavoriteSerie(serie.id)
             binding.imageView.loadImage(requireContext(), serie.imageUrl)
             binding.serieNameTextView.text = serie.name
             binding.airDateTextView.text = serie.premiered

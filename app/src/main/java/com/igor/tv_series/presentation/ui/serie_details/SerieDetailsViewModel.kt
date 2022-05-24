@@ -13,7 +13,8 @@ class SerieDetailsViewModel(
     private val fetchEpisodes: FetchEpisodes,
     private val fetchSeasons: FetchSeasons,
     private val favoriteSeries: InsertFavoriteSeries,
-    private val deleteFavoriteSeries: DeleteFavoriteSeries
+    private val deleteFavoriteSeries: DeleteFavoriteSeries,
+    private val isAFavoriteSerie: IsAFavoriteSerie
 ) : ViewModel() {
 
     private val _episodes = MutableLiveData<List<EpisodeUIModel>>()
@@ -23,6 +24,10 @@ class SerieDetailsViewModel(
     private val _seasons = MutableLiveData<List<SeasonUIModel>>()
     val seasons: LiveData<List<SeasonUIModel>>
         get() = _seasons
+
+    private val _isFavorite = MutableLiveData<Boolean>()
+    val isFavorite: LiveData<Boolean>
+        get() = _isFavorite
 
     fun fetchEpisodes(seasonId: Int) {
         viewModelScope.launch {
@@ -66,6 +71,12 @@ class SerieDetailsViewModel(
     fun deleteSerie(serie: SerieUIModel) {
         viewModelScope.launch {
             deleteFavoriteSeries.invoke(listOf(serie.toModel()))
+        }
+    }
+
+    fun isAFavoriteSerie(id: Int) {
+        viewModelScope.launch {
+            _isFavorite.value = isAFavoriteSerie.invoke(id)
         }
     }
 }
