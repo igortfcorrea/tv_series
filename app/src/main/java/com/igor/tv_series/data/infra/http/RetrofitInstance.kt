@@ -1,4 +1,4 @@
-package com.igor.tv_series.data.infra
+package com.igor.tv_series.data.infra.http
 
 import com.igor.tv_series.BuildConfig
 import okhttp3.OkHttpClient

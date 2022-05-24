@@ -1,9 +1,9 @@
-package com.igor.tv_series.data.infra
+package com.igor.tv_series.data.infra.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.igor.tv_series.data.entities.FavoriteSeries
-import com.igor.tv_series.data.infra.TvSeriesDatabase.Companion.VERSION
+import com.igor.tv_series.data.infra.local.TvSeriesDatabase.Companion.VERSION
 
 @Database(
     entities = [FavoriteSeries::class],

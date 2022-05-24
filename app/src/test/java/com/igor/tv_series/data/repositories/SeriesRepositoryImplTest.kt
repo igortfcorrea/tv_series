@@ -1,8 +1,8 @@
 package com.igor.tv_series.data.repositories
 
 import com.igor.tv_series.data.entities.FavoriteSeries
-import com.igor.tv_series.data.infra.FavoriteSeriesDao
-import com.igor.tv_series.data.infra.SeriesService
+import com.igor.tv_series.data.infra.local.FavoriteSeriesDao
+import com.igor.tv_series.data.infra.http.SeriesService
 import com.igor.tv_series.data.models.EpisodeDto
 import com.igor.tv_series.data.models.SearchSerieDto
 import com.igor.tv_series.data.models.SeasonDto

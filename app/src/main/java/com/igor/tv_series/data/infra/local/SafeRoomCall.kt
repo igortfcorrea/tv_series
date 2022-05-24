@@ -1,4 +1,4 @@
-package com.igor.tv_series.data.infra
+package com.igor.tv_series.data.infra.local
 
 suspend inline fun <T> safeRoomCall(
     crossinline apiCall: suspend () -> T

@@ -1,4 +1,4 @@
-package com.igor.tv_series.data.infra
+package com.igor.tv_series.data.infra.local
 
 import androidx.room.*
 import com.igor.tv_series.data.entities.FavoriteSeries

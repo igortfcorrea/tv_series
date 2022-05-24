@@ -1,4 +1,4 @@
-package com.igor.tv_series.data.infra
+package com.igor.tv_series.data.infra.http
 
 import retrofit2.HttpException
 import java.net.ConnectException

@@ -1,9 +1,9 @@
 package com.igor.tv_series.data.di
 
-import com.igor.tv_series.data.infra.*
-import com.igor.tv_series.data.infra.SeriesService
-import com.igor.tv_series.data.infra.TvSeriesDatabase
-import com.igor.tv_series.data.infra.TvSeriesDatabaseManager
+import com.igor.tv_series.data.infra.http.SeriesService
+import com.igor.tv_series.data.infra.local.TvSeriesDatabase
+import com.igor.tv_series.data.infra.local.TvSeriesDatabaseManager
+import com.igor.tv_series.data.infra.http.RetrofitInstance
 import com.igor.tv_series.data.repositories.SeriesRepository
 import com.igor.tv_series.data.repositories.SeriesRepositoryImpl
 import org.koin.android.ext.koin.androidContext
