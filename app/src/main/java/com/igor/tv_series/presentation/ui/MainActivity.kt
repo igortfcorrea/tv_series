@@ -44,9 +44,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupAdapter() {
         binding.seriesRecyclerView.layoutManager = linearLayoutManager
-        adapter = SeriesAdapter(this) { serie, _ ->
-            startActivity(SerieDetailsActivity.getIntent(this, serie))
-        }
+        adapter = SeriesAdapter(
+            context = this,
+            onItemClicked = { serie, _ ->
+                startActivity(SerieDetailsActivity.getIntent(this, serie))
+            })
         binding.seriesRecyclerView.adapter = adapter
     }
 

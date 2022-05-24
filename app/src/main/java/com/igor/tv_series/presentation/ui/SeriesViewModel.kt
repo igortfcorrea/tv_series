@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.igor.tv_series.domain.Success
-import com.igor.tv_series.domain.usecases.FetchSeries
-import com.igor.tv_series.domain.usecases.SearchSeries
+import com.igor.tv_series.domain.usecases.*
 import com.igor.tv_series.presentation.models.SerieUIModel
+import com.igor.tv_series.presentation.models.toModel
 import com.igor.tv_series.presentation.models.toUIModel
 import kotlinx.coroutines.launch
 import okhttp3.internal.toImmutableList

@@ -9,7 +9,6 @@ import com.igor.tv_series.data.models.EpisodeDto
 import com.igor.tv_series.data.models.SearchSerieDto
 import com.igor.tv_series.data.models.SeasonDto
 import com.igor.tv_series.data.models.SerieDto
-import java.lang.Exception
 
 internal class SeriesRepositoryImpl(
     private val seriesService: SeriesService,

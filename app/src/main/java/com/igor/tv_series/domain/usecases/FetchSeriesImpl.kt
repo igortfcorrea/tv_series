@@ -5,6 +5,7 @@ import com.igor.tv_series.domain.Empty
 import com.igor.tv_series.domain.Error
 import com.igor.tv_series.domain.Success
 import com.igor.tv_series.domain.State
+import com.igor.tv_series.domain.models.FavoriteSerieModel
 import com.igor.tv_series.domain.models.SerieModel
 import com.igor.tv_series.domain.models.toModel
 import kotlinx.coroutines.CoroutineDispatcher

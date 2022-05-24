@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -74,7 +75,7 @@ dependencies {
 
     implementation deps.room.runtime
     implementation deps.room.coroutines
-    annotationProcessor deps.room.compiler
+    kapt deps.room.compiler
 
     testImplementation deps.junit
     androidTestImplementation deps.androidx.ext_junit

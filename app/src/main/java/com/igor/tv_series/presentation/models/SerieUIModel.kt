@@ -1,6 +1,9 @@
 package com.igor.tv_series.presentation.models
 
 import android.os.Parcelable
+import com.igor.tv_series.domain.models.FavoriteSerieModel
+import com.igor.tv_series.domain.models.ImageModel
+import com.igor.tv_series.domain.models.RatingModel
 import com.igor.tv_series.domain.models.SerieModel
 import kotlinx.parcelize.Parcelize
 
@@ -13,7 +16,8 @@ data class SerieUIModel(
     val premiered: String,
     val ended: String?,
     val genres: List<String>,
-    val summary: String
+    val summary: String,
+    var isFavorite: Boolean = false
 ) : Parcelable
 
 fun SerieModel.toUIModel(): SerieUIModel {
@@ -26,5 +30,18 @@ fun SerieModel.toUIModel(): SerieUIModel {
         ended = this.ended,
         genres = this.genres ?: emptyList(),
         summary = this.summary ?: ""
+    )
+}
+
+fun SerieUIModel.toModel(): FavoriteSerieModel {
+    return FavoriteSerieModel(
+        id = this.id,
+        rating = this.score,
+        name = this.name,
+        imageUrl = this.imageUrl,
+        premiered = this.premiered,
+        ended = this.ended,
+        genres = this.genres.joinToString(),
+        summary = this.summary
     )
 }

@@ -22,12 +22,24 @@
         <TextView
             android:id="@+id/serieNameTextView"
             style="@style/TextViewTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_8"
+            android:layout_marginEnd="@dimen/spacing_8"
+            android:maxLines="3"
+            app:layout_constraintEnd_toStartOf="@+id/favoriteStarImageView"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView"
             tools:text="Ozark" />
+
+        <ImageView
+            android:id="@+id/favoriteStarImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_star_border_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/airDateTextView"

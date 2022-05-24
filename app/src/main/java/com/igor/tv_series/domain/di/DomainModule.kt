@@ -29,4 +29,22 @@ val domainModule = module {
             seriesRepository = get()
         )
     }
+
+    single<FetchFavoriteSeries> {
+        FetchFavoriteSeriesImpl(
+            seriesRepository = get()
+        )
+    }
+
+    single<DeleteFavoriteSeries> {
+        DeleteFavoriteSeriesImpl(
+            seriesRepository = get()
+        )
+    }
+
+    single<InsertFavoriteSeries> {
+        InsertFavoriteSeriesImpl(
+            seriesRepository = get()
+        )
+    }
 }

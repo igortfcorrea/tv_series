@@ -14,7 +14,7 @@ data class SerieModel(
     val summary: String?
 )
 
-fun SerieDto.toModel() : SerieModel {
+fun SerieDto.toModel(): SerieModel {
     return SerieModel(
         id = this.id,
         rating = this.rating?.toModel(),

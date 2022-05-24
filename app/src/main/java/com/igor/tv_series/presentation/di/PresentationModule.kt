@@ -9,14 +9,16 @@ val presentationModule = module {
     viewModel {
         SeriesViewModel(
             fetchSeries = get(),
-            searchSeries = get()
+            searchSeries = get(),
         )
     }
 
     viewModel {
         SerieDetailsViewModel(
             fetchEpisodes = get(),
-            fetchSeasons = get()
+            fetchSeasons = get(),
+            favoriteSeries = get(),
+            deleteFavoriteSeries = get()
         )
     }
 }

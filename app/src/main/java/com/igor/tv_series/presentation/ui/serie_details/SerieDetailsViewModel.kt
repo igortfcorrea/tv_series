@@ -5,16 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.igor.tv_series.domain.Success
-import com.igor.tv_series.domain.usecases.FetchEpisodes
-import com.igor.tv_series.domain.usecases.FetchSeasons
-import com.igor.tv_series.presentation.models.EpisodeUIModel
-import com.igor.tv_series.presentation.models.SeasonUIModel
-import com.igor.tv_series.presentation.models.toUIModel
+import com.igor.tv_series.domain.usecases.*
+import com.igor.tv_series.presentation.models.*
 import kotlinx.coroutines.launch
 
 class SerieDetailsViewModel(
     private val fetchEpisodes: FetchEpisodes,
-    private val fetchSeasons: FetchSeasons
+    private val fetchSeasons: FetchSeasons,
+    private val favoriteSeries: InsertFavoriteSeries,
+    private val deleteFavoriteSeries: DeleteFavoriteSeries
 ) : ViewModel() {
 
     private val _episodes = MutableLiveData<List<EpisodeUIModel>>()
@@ -55,6 +54,18 @@ class SerieDetailsViewModel(
                 val seasonId = _seasons.value?.get(position)?.id ?: 1
                 fetchEpisodes(seasonId)
             }
+        }
+    }
+
+    fun favoriteSerie(serie: SerieUIModel) {
+        viewModelScope.launch {
+            favoriteSeries.invoke(listOf(serie.toModel()))
+        }
+    }
+
+    fun deleteSerie(serie: SerieUIModel) {
+        viewModelScope.launch {
+            deleteFavoriteSeries.invoke(listOf(serie.toModel()))
         }
     }
 }

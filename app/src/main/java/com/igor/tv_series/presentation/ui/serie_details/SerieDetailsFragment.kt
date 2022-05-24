@@ -63,7 +63,20 @@ class SerieDetailsFragment : Fragment() {
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) = Unit
+        }
 
+        binding.favoriteStarImageView.setOnClickListener {
+            serie?.let { serie ->
+                if (serie.isFavorite) {
+                    serieDetailsViewModel.deleteSerie(serie)
+                    serie.isFavorite = false
+                    binding.favoriteStarImageView.setImageResource(R.drawable.ic_baseline_star_border_24)
+                } else {
+                    serieDetailsViewModel.favoriteSerie(serie)
+                    serie.isFavorite = true
+                    binding.favoriteStarImageView.setImageResource(R.drawable.ic_baseline_star_24)
+                }
+            }
         }
     }
 
