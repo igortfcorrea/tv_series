@@ -1,8 +1,12 @@
 package com.igor.tv_series.presentation.ui
 
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextWatcher
+import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.AbsListView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -71,20 +75,39 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.searchSerieLayout.clearSearchImageView.setOnClickListener {
-            binding.searchSerieLayout.searchEditText.clearFocus()
-            binding.searchSerieLayout.searchEditText.text.clear()
+            clearSearch()
         }
 
         binding.seriesRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
 
-                if (!recyclerView.canScrollVertically(1)) {
-                    if (!seriesViewModel.isFetchingSeries())
-                        seriesViewModel.fetchSeries()
+                if (!recyclerView.canScrollVertically(1) &&
+                    !seriesViewModel.isFetchingSeries() &&
+                    !binding.onlyFavoritesCheckBox.isChecked
+                ) {
+                    seriesViewModel.fetchSeries()
                 }
             }
         })
+
+        binding.onlyFavoritesCheckBox.setOnCheckedChangeListener { _, checked ->
+            if (checked) {
+                binding.searchSerieLayout.searchBarContainer.visibility = GONE
+                seriesViewModel.fetchFavorites()
+            } else {
+                binding.searchSerieLayout.searchBarContainer.visibility = VISIBLE
+                seriesViewModel.fetchSeries(refreshList = true)
+                binding.searchSerieLayout.searchEditText.removeTextChangedListener(editTextWatcher)
+                clearSearch()
+                binding.searchSerieLayout.searchEditText.addTextChangedListener(editTextWatcher)
+            }
+        }
+    }
+
+    private fun clearSearch() {
+        binding.searchSerieLayout.searchEditText.clearFocus()
+        binding.searchSerieLayout.searchEditText.text.clear()
     }
 
     private fun showClearSearch() {

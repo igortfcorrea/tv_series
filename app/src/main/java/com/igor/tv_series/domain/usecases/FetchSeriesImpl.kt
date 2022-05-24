@@ -19,7 +19,10 @@ internal class FetchSeriesImpl(
 
     private var currentPage = 0
 
-    override suspend fun invoke(): State<List<SerieModel>> {
+    override suspend fun invoke(refreshList: Boolean): State<List<SerieModel>> {
+        if (refreshList)
+            this.currentPage = 0
+
         val fetchSeriesResult = withContext(ioDispatcher) {
             seriesRepository.fetchSeries(currentPage)
         }

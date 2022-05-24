@@ -15,7 +15,7 @@ data class SerieUIModel(
     val imageUrl: String,
     val premiered: String,
     val ended: String?,
-    val genres: List<String>,
+    val genres: String,
     val summary: String,
     var isFavorite: Boolean = false
 ) : Parcelable
@@ -28,7 +28,20 @@ fun SerieModel.toUIModel(): SerieUIModel {
         imageUrl = this.image?.medium ?: "",
         premiered = this.premiered ?: "",
         ended = this.ended,
-        genres = this.genres ?: emptyList(),
+        genres = this.genres?.joinToString() ?: "",
+        summary = this.summary ?: ""
+    )
+}
+
+fun FavoriteSerieModel.toUIModel(): SerieUIModel {
+    return SerieUIModel(
+        id = this.id,
+        score = this.rating ?: 0f,
+        name = this.name ?: "",
+        imageUrl = this.imageUrl ?: "",
+        premiered = this.premiered ?: "",
+        ended = this.ended,
+        genres = this.genres ?: "",
         summary = this.summary ?: ""
     )
 }
@@ -41,7 +54,7 @@ fun SerieUIModel.toModel(): FavoriteSerieModel {
         imageUrl = this.imageUrl,
         premiered = this.premiered,
         ended = this.ended,
-        genres = this.genres.joinToString(),
+        genres = this.genres,
         summary = this.summary
     )
 }

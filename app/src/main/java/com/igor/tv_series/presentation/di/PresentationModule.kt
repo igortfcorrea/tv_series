@@ -10,6 +10,7 @@ val presentationModule = module {
         SeriesViewModel(
             fetchSeries = get(),
             searchSeries = get(),
+            fetchFavoriteSeries = get()
         )
     }
 

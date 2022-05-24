@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.igor.tv_series.domain.Success
 import com.igor.tv_series.domain.models.SerieModel
+import com.igor.tv_series.domain.usecases.FetchFavoriteSeries
 import com.igor.tv_series.domain.usecases.FetchSeries
 import com.igor.tv_series.domain.usecases.SearchSeries
 import com.igor.tv_series.presentation.models.SerieUIModel
@@ -35,6 +36,9 @@ class SeriesViewModelTest {
     private lateinit var searchSeries: SearchSeries
 
     @Mock
+    private lateinit var fetchFavoriteSeries: FetchFavoriteSeries
+
+    @Mock
     private lateinit var seriesObserver: Observer<List<SerieUIModel>>
 
     private lateinit var seriesViewModel: SeriesViewModel
@@ -43,7 +47,8 @@ class SeriesViewModelTest {
     fun setup() {
         seriesViewModel = SeriesViewModel(
             fetchSeries = fetchSeries,
-            searchSeries = searchSeries
+            searchSeries = searchSeries,
+            fetchFavoriteSeries = fetchFavoriteSeries
         )
 
         seriesViewModel.series.observeForever(seriesObserver)
@@ -108,13 +113,13 @@ class SeriesViewModelTest {
     fun searchShouldFetchSeriesWhenTermIsNull() = runBlockingTest {
         seriesViewModel.search(null)
 
-        Mockito.verify(fetchSeries, times(1)).invoke()
+        Mockito.verify(fetchSeries, times(1)).invoke(true)
     }
 
     @Test
     fun searchShouldFetchSeriesWhenTermIsBlank() = runBlockingTest {
         seriesViewModel.search(" ")
 
-        Mockito.verify(fetchSeries, times(1)).invoke()
+        Mockito.verify(fetchSeries, times(1)).invoke(true)
     }
 }

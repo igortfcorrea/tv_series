@@ -14,7 +14,8 @@ import okhttp3.internal.toImmutableList
 
 class SeriesViewModel(
     private val fetchSeries: FetchSeries,
-    private val searchSeries: SearchSeries
+    private val searchSeries: SearchSeries,
+    private val fetchFavoriteSeries: FetchFavoriteSeries
 ) : ViewModel() {
 
     private val _series = MutableLiveData<List<SerieUIModel>>()
@@ -26,7 +27,7 @@ class SeriesViewModel(
     fun fetchSeries(refreshList: Boolean = false) {
         viewModelScope.launch {
             isFetchingSeries = true
-            fetchSeries.invoke().also { series ->
+            fetchSeries.invoke(refreshList).also { series ->
                 when (series) {
                     is Success -> {
                         if (refreshList)
@@ -64,5 +65,19 @@ class SeriesViewModel(
 
     fun isFetchingSeries(): Boolean {
         return isFetchingSeries
+    }
+
+    fun fetchFavorites() {
+        viewModelScope.launch {
+            isFetchingSeries = true
+            fetchFavoriteSeries.invoke().also { series ->
+                when (series) {
+                    is Success -> {
+                        _series.value = series.result.map { it.toUIModel() }
+                    }
+                }
+                isFetchingSeries = false
+            }
+        }
     }
 }
