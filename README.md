@@ -1,4 +1,4 @@
-## Implemented features
+## Features
 
 All the required features were implemented, the extra features implemented is:
 
