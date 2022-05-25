@@ -18,4 +18,4 @@ Gradle JDK: 11
 
 ## APK
 
-The apk is in app/build/outputs/apk/debug
+The apk is in the root folter
