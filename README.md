@@ -18,4 +18,4 @@ Gradle JDK: 11
 
 ## APK
 
-The apk is in the root folter
+The apk is in the root folder
