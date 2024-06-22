@@ -33,6 +33,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        compose true
     }
     testOptions {
         // Used for Unit testing Android dependent elements in /test folder
@@ -80,4 +81,20 @@ dependencies {
     testImplementation deps.junit
     androidTestImplementation deps.androidx.ext_junit
     androidTestImplementation deps.androidx.espresso_core
+
+    // Jetpack Compose
+    def composeBom = platform('androidx.compose:compose-bom:2024.06.00')
+    implementation composeBom
+    androidTestImplementation composeBom
+
+    // Material Design 3
+    implementation 'androidx.compose.material3:material3'
+
+    // Android Studio Preview support
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+
+    // UI Tests
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
 }
